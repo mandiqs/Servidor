@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToMany
 import jakarta.persistence.Table
 import jakarta.persistence.Transient
 
-@Entity
+@Entity //entidade do banco de dados, mapeada em uma tabela com o mesmo nome da entidade
 @Table(name = "TblUser")
 class User(
     @Id @GeneratedValue
