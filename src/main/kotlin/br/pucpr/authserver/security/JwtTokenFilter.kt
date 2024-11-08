@@ -12,7 +12,9 @@ import org.springframework.web.filter.GenericFilterBean
 class JwtTokenFilter(private val jwt: Jwt) : GenericFilterBean() {
     override fun doFilter(req: ServletRequest, res: ServletResponse, chain: FilterChain) {
         val auth = jwt.extract(req as HttpServletRequest)
-        if (auth != null) SecurityContextHolder.getContext().authentication = auth
+        if (auth != null) {
+            SecurityContextHolder.getContext().authentication = auth
+        }
         chain.doFilter(req, res)
     }
 

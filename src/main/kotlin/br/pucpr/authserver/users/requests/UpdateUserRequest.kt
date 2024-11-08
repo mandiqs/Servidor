@@ -1,8 +1,8 @@
-package br.pucpr.authserver.users.controller.requests
+package br.pucpr.authserver.users.requests
 
 import jakarta.validation.constraints.NotBlank
 
-data class PatchUserRequest(
+data class UpdateUserRequest(
     @field:NotBlank
     val name: String?
 )

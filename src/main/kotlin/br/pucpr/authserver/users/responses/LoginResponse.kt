@@ -1,4 +1,4 @@
-package br.pucpr.authserver.users.controller.responses
+package br.pucpr.authserver.users.responses
 
 data class LoginResponse(
     val token: String,

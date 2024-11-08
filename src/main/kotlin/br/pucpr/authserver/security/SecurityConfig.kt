@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod
 import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy.STATELESS
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
@@ -18,47 +19,50 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector
 
-
 @Configuration
 @EnableMethodSecurity
 @SecurityScheme(
-    name = "AuthServer",
-    type = SecuritySchemeType.HTTP,
+    name="AuthServer",
+    type= SecuritySchemeType.HTTP,
     scheme = "bearer",
     bearerFormat = "JWT"
 )
 class SecurityConfig(
-    private val jwtTokenFilter: JwtTokenFilter
+    private val jwtFilter: JwtTokenFilter
 ) {
     @Bean
-    fun mvc(introspector: HandlerMappingIntrospector) = MvcRequestMatcher.Builder(introspector)
-
-    @Bean
-    fun filterChain(security: HttpSecurity, mvc: MvcRequestMatcher.Builder): SecurityFilterChain =
-        security
-            .sessionManagement { it.sessionCreationPolicy(STATELESS) }
-            .cors(Customizer.withDefaults())
-            .csrf { it.disable() }
-            .headers { it.frameOptions { fo -> fo.disable() } }
-            .authorizeHttpRequests { requests ->
-                requests
-                    .requestMatchers(antMatcher(HttpMethod.GET)).permitAll()
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/users")).permitAll()
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/users/login")).permitAll()
-                    .requestMatchers(antMatcher("/h2-console/**")).permitAll()
-                    .anyRequest().authenticated()
-            }
-            .addFilterBefore(jwtTokenFilter, BasicAuthenticationFilter::class.java)
-            .build()
+    fun mvc(introspector: HandlerMappingIntrospector) =
+        MvcRequestMatcher.Builder(introspector)
 
     @Bean
     fun corsFilter() =
         CorsConfiguration().apply {
             addAllowedHeader("*")
-            addAllowedOrigin("*")
             addAllowedMethod("*")
+            addAllowedOrigin("*")
         }.let {
             UrlBasedCorsConfigurationSource().apply {
                 registerCorsConfiguration("/**", it)
             }
-        }.let { CorsFilter(it) } }
+        }.let {
+            CorsFilter(it)
+        }
+
+    @Bean
+    fun filterChain(security: HttpSecurity, mvc: MvcRequestMatcher.Builder):
+            SecurityFilterChain =
+        security
+            .sessionManagement{ it.sessionCreationPolicy(STATELESS) }
+            .cors(Customizer.withDefaults())
+            .csrf { it.disable() }
+            .headers { it.frameOptions { fo -> fo.disable() }}
+            .authorizeHttpRequests { requests ->
+                requests
+                    .requestMatchers(antMatcher(HttpMethod.GET)).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/users/login")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/users")).permitAll()
+                    .requestMatchers(antMatcher("/h2-console/**")).permitAll()
+                    .anyRequest().authenticated()
+            }.addFilterBefore(jwtFilter, BasicAuthenticationFilter::class.java)
+            .build()
+}

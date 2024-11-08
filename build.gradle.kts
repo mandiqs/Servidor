@@ -1,60 +1,69 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    id("org.springframework.boot") version "3.1.2"
-    id("io.spring.dependency-management") version "1.1.2"
-    kotlin("jvm") version "1.8.22"
-    kotlin("plugin.spring") version "1.8.22"
-    kotlin("plugin.jpa") version "1.8.22"
+	id("org.springframework.boot") version "3.3.2"
+	id("io.spring.dependency-management") version "1.1.6"
+	kotlin("jvm") version "1.9.24"
+	kotlin("plugin.spring") version "1.9.24"
+	kotlin("plugin.jpa") version "1.9.24"
+
 }
 
 group = "br.pucpr"
 version = "0.0.1-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
 }
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+	testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
+	testImplementation("io.mockk:mockk:1.13.12")
 
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtimeOnly("com.h2database:h2")
+	runtimeOnly("io.kotest:kotest-assertions-core:5.9.1")
 
-    implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
 
-    val jjwt = "0.12.5"
-    implementation("io.jsonwebtoken:jjwt-api:${jjwt}")
-    implementation("io.jsonwebtoken:jjwt-jackson:${jjwt}")
-    runtimeOnly("io.jsonwebtoken:jjwt-impl:${jjwt}")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.mockk:mockk:1.13.10")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("com.h2database:h2")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
-    val kottest = "5.8.1"
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:${kottest}")
-    runtimeOnly("io.kotest:kotest-assertions-core:${kottest}")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+
+	val jjwt = "0.12.5"
+	implementation("io.jsonwebtoken:jjwt-api:${jjwt}")
+	implementation("io.jsonwebtoken:jjwt-jackson:${jjwt}")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:${jjwt}")
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
-    }
+kotlin {
+	compilerOptions {
+		freeCompilerArgs.addAll("-Xjsr305=strict")
+	}
 }
 
 tasks.withType<Test> {
-    useJUnitPlatform()
+	useJUnitPlatform()
 }
 
 allOpen {
-    annotation("jakarta.persistence.Entity")
+	annotation("jakarta.persistence.Entity")
+}
+
+configurations {
+	compileOnly {
+		extendsFrom(configurations.annotationProcessor.get())
+	}
 }

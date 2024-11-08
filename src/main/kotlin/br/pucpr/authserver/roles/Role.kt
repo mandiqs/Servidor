@@ -4,15 +4,16 @@ import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
+import jakarta.validation.constraints.NotBlank
 
 @Entity
 class Role(
     @Id @GeneratedValue
-    val id: Long? = null,
+    var id: Long? = null,
 
-    @Column(unique = true, nullable = false)
-    val name: String,
+    @Column(nullable = false, unique = true)
+    var name: String,
 
-    @Column(nullable = false)
-    val description: String = "",
+    @NotBlank
+    var description: String,
 )

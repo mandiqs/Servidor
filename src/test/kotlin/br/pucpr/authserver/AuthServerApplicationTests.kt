@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class AuthServerApplicationTests {
+class AuthserverApplicationTests {
 
-    @Test
-    fun contextLoads() {
-    }
+	@Test
+	fun contextLoads() {
+	}
 
 }
