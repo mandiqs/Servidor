@@ -61,7 +61,13 @@ class SecurityConfig(
                     .requestMatchers(antMatcher(HttpMethod.GET)).permitAll()
                     .requestMatchers(mvc.pattern(HttpMethod.POST, "/users/login")).permitAll()
                     .requestMatchers(mvc.pattern(HttpMethod.POST, "/users")).permitAll()
+                    .requestMatchers(mvc.pattern("/author")).permitAll()
+                    .requestMatchers(mvc.pattern("/book")).permitAll()
                     .requestMatchers(antMatcher("/h2-console/**")).permitAll()
+                    // Permite acesso ao Swagger UI
+                    .requestMatchers(mvc.pattern("/v3/api-docs/**")).permitAll()
+                    .requestMatchers(mvc.pattern("/swagger-ui/**")).permitAll()
+                    .requestMatchers(mvc.pattern("/swagger-ui.html")).permitAll()
                     .anyRequest().authenticated()
             }.addFilterBefore(jwtFilter, BasicAuthenticationFilter::class.java)
             .build()
