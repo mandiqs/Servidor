@@ -85,6 +85,8 @@ class UserService(
         )
     }
 
+    fun findByEmailOrNull(email: String) = repository.findByEmail(email)
+
     companion object {
         private val log = LoggerFactory.getLogger(UserService::class.java)
     }
