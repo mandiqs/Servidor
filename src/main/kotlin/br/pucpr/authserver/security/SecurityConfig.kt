@@ -8,7 +8,6 @@ import org.springframework.http.HttpMethod
 import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy.STATELESS
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
@@ -61,8 +60,8 @@ class SecurityConfig(
                     .requestMatchers(antMatcher(HttpMethod.GET)).permitAll()
                     .requestMatchers(mvc.pattern(HttpMethod.POST, "/users/login")).permitAll()
                     .requestMatchers(mvc.pattern(HttpMethod.POST, "/users")).permitAll()
-                    .requestMatchers(mvc.pattern("/author")).permitAll()
-                    .requestMatchers(mvc.pattern("/book")).permitAll()
+                    .requestMatchers(mvc.pattern("/authors")).permitAll()
+                    .requestMatchers(mvc.pattern("/books")).permitAll()
                     .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                     // Permite acesso ao Swagger UI
                     .requestMatchers(mvc.pattern("/v3/api-docs/**")).permitAll()
