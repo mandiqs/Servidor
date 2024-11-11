@@ -434,3 +434,73 @@ This generated password is for development use only. Your security configuration
 2024-11-10T22:29:12.563-03:00  INFO 13692 --- [authserver] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-10T22:29:12.584-03:00  INFO 13692 --- [authserver] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-11-10T22:29:12.590-03:00  INFO 13692 --- [authserver] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-10T22:45:12.766-03:00  INFO 21292 --- [authserver] [main] b.p.authserver.AuthServerApplicationKt   : Starting AuthServerApplicationKt using Java 21.0.1 with PID 21292 (C:\Users\Usuário\Desktop\Correto - Projeto Back End - A.C\Servidor\build\classes\kotlin\main started by Usuário in C:\Users\Usuário\Desktop\Correto - Projeto Back End - A.C\Servidor)
+2024-11-10T22:45:12.769-03:00  INFO 21292 --- [authserver] [main] b.p.authserver.AuthServerApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2024-11-10T22:45:14.019-03:00  INFO 21292 --- [authserver] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-10T22:45:14.092-03:00  INFO 21292 --- [authserver] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 4 JPA repository interfaces.
+2024-11-10T22:45:14.720-03:00  INFO 21292 --- [authserver] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-10T22:45:14.733-03:00  INFO 21292 --- [authserver] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-10T22:45:14.734-03:00  INFO 21292 --- [authserver] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-11-10T22:45:14.798-03:00  INFO 21292 --- [authserver] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-11-10T22:45:14.798-03:00  INFO 21292 --- [authserver] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1959 ms
+2024-11-10T22:45:14.839-03:00  INFO 21292 --- [authserver] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-10T22:45:15.080-03:00  INFO 21292 --- [authserver] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db user=SA
+2024-11-10T22:45:15.081-03:00  INFO 21292 --- [authserver] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-10T22:45:15.090-03:00  INFO 21292 --- [authserver] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db'
+2024-11-10T22:45:15.260-03:00  INFO 21292 --- [authserver] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-10T22:45:15.358-03:00  INFO 21292 --- [authserver] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-11-10T22:45:15.403-03:00  INFO 21292 --- [authserver] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-10T22:45:15.784-03:00  INFO 21292 --- [authserver] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-10T22:45:16.940-03:00  INFO 21292 --- [authserver] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-10T22:45:17.006-03:00  INFO 21292 --- [authserver] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-10T22:45:17.622-03:00  INFO 21292 --- [authserver] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-10T22:45:18.123-03:00  WARN 21292 --- [authserver] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-10T22:45:18.382-03:00  WARN 21292 --- [authserver] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: aef0b30e-9a68-470c-8fdf-75837b87cbab
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-11-10T22:45:18.430-03:00  INFO 21292 --- [authserver] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-11-10T22:45:18.905-03:00  INFO 21292 --- [authserver] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2024-11-10T22:45:19.082-03:00  INFO 21292 --- [authserver] [main] br.pucpr.authserver.Bootstrapper         : ADMIN and USER roles created!
+2024-11-10T22:45:19.120-03:00  INFO 21292 --- [authserver] [main] br.pucpr.authserver.Bootstrapper         : ADMIN user created!
+2024-11-10T22:45:19.123-03:00  INFO 21292 --- [authserver] [main] b.p.authserver.AuthServerApplicationKt   : Started AuthServerApplicationKt in 6.931 seconds (process running for 8.045)
+2024-11-10T22:55:35.988-03:00  INFO 21292 --- [authserver] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-10T22:55:36.028-03:00  INFO 21292 --- [authserver] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-10T22:55:36.033-03:00  INFO 21292 --- [authserver] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-10T22:56:02.905-03:00  INFO 17196 --- [authserver] [main] b.p.authserver.AuthServerApplicationKt   : Starting AuthServerApplicationKt using Java 21.0.1 with PID 17196 (C:\Users\Usuário\Desktop\Correto - Projeto Back End - A.C\Servidor\build\classes\kotlin\main started by Usuário in C:\Users\Usuário\Desktop\Correto - Projeto Back End - A.C\Servidor)
+2024-11-10T22:56:02.908-03:00  INFO 17196 --- [authserver] [main] b.p.authserver.AuthServerApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2024-11-10T22:56:03.905-03:00  INFO 17196 --- [authserver] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-10T22:56:03.967-03:00  INFO 17196 --- [authserver] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 4 JPA repository interfaces.
+2024-11-10T22:56:04.539-03:00  INFO 17196 --- [authserver] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-10T22:56:04.550-03:00  INFO 17196 --- [authserver] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-10T22:56:04.550-03:00  INFO 17196 --- [authserver] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-11-10T22:56:04.607-03:00  INFO 17196 --- [authserver] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-11-10T22:56:04.607-03:00  INFO 17196 --- [authserver] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1623 ms
+2024-11-10T22:56:04.643-03:00  INFO 17196 --- [authserver] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-10T22:56:04.865-03:00  INFO 17196 --- [authserver] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db user=SA
+2024-11-10T22:56:04.867-03:00  INFO 17196 --- [authserver] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-10T22:56:04.877-03:00  INFO 17196 --- [authserver] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db'
+2024-11-10T22:56:05.041-03:00  INFO 17196 --- [authserver] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-10T22:56:05.128-03:00  INFO 17196 --- [authserver] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-11-10T22:56:05.184-03:00  INFO 17196 --- [authserver] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-10T22:56:05.533-03:00  INFO 17196 --- [authserver] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-10T22:56:06.691-03:00  INFO 17196 --- [authserver] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-10T22:56:06.744-03:00  INFO 17196 --- [authserver] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-10T22:56:07.309-03:00  INFO 17196 --- [authserver] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-10T22:56:07.784-03:00  WARN 17196 --- [authserver] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-10T22:56:08.037-03:00  WARN 17196 --- [authserver] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 77bd3539-9327-4139-9c55-cbcd10e65a57
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-11-10T22:56:08.061-03:00  INFO 17196 --- [authserver] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-11-10T22:56:08.504-03:00  INFO 17196 --- [authserver] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2024-11-10T22:56:08.678-03:00  INFO 17196 --- [authserver] [main] br.pucpr.authserver.Bootstrapper         : ADMIN and USER roles created!
+2024-11-10T22:56:08.702-03:00  INFO 17196 --- [authserver] [main] br.pucpr.authserver.Bootstrapper         : ADMIN user created!
+2024-11-10T22:56:08.704-03:00  INFO 17196 --- [authserver] [main] b.p.authserver.AuthServerApplicationKt   : Started AuthServerApplicationKt in 6.959 seconds (process running for 8.22)
+2024-11-10T22:56:39.131-03:00  INFO 17196 --- [authserver] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-10T22:56:39.138-03:00  INFO 17196 --- [authserver] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-10T22:56:39.140-03:00  INFO 17196 --- [authserver] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

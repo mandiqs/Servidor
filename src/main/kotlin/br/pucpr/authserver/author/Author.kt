@@ -17,5 +17,5 @@ data class Author(
 
     @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JsonIgnore
-    val books: List<Book> = mutableListOf()
+    var books: MutableList<Book> = mutableListOf()
 )
