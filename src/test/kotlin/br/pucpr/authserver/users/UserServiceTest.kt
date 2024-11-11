@@ -149,7 +149,7 @@ class UserServiceTest {
         val user = createTestUser(TEST_ID)
         every { userRepository.findByEmail(TEST_EMAIL) } returns user
 
-        val result = userService.findByEmailOrNull(TEST_EMAIL)
+        val result = userService.findByEmail(TEST_EMAIL)
 
         result shouldBe user
         verify { userRepository.findByEmail(TEST_EMAIL) }

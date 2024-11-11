@@ -15,5 +15,5 @@ interface UserRepository: JpaRepository<User, Long> {
         " order by u.name"
     )
     fun findByRole(role: String): List<User>
-    abstract fun findByEmailOrNull(email: String)
+
 }
