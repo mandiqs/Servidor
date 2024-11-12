@@ -6,7 +6,7 @@
 - Carlos Eduardo Domingues Hobmeier
 
 ### Link para o vídeo
-www.
+https://youtu.be/ojkRh89FRfk
 
 ***
 
