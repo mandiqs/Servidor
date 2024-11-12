@@ -52,18 +52,18 @@ Disponível em http://localhost:8080/api/swagger-ui/index.html#/
 ***
 ## Endpoints
 ##### Autenticação
-POST /users/login => Autentica um usuário e retorna um token JWT.
-POST /users: Cria um novo usuário.
+- POST /users/login => Autentica um usuário e retorna um token JWT.
+- POST /users: Cria um novo usuário.
 ##### Gerenciamento de Livros
-GET /books: Lista todos os livros (acesso público).
-GET /books/{id}: Busca um livro pelo ID (acesso público).
-POST /books: Adiciona um novo livro (necessita autenticação).
-PUT /books/{id}: Atualiza um livro (somente para ADMIN).
-DELETE /books/{id}: Exclui um livro (somente para ADMIN).
+- GET /books: Lista todos os livros (acesso público).
+- GET /books/{id}: Busca um livro pelo ID (acesso público).
+- POST /books: Adiciona um novo livro (necessita autenticação).
+- PUT /books/{id}: Atualiza um livro (somente para ADMIN).
+- DELETE /books/{id}: Exclui um livro (somente para ADMIN).
 
 ##### Gerenciamento de Autores
-GET /authors: Lista todos os autores (acesso público).
-GET /authors/{id}: Busca um autor pelo ID (acesso público).
-POST /authors: Adiciona um novo autor (necessita autenticação).
-PUT /authors/{id}: Atualiza um autor (somente para ADMIN).
-DELETE /authors/{id}: Exclui um autor (somente para ADMIN).
+- GET /authors: Lista todos os autores (acesso público).
+- GET /authors/{id}: Busca um autor pelo ID (acesso público).
+- POST /authors: Adiciona um novo autor (necessita autenticação).
+- PUT /authors/{id}: Atualiza um autor (somente para ADMIN).
+- DELETE /authors/{id}: Exclui um autor (somente para ADMIN).
