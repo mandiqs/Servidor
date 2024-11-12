@@ -1,0 +1,190 @@
+/* Estilos Globais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1c1e26;
+    color: #f5f6fa;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+  }
+  
+  /* Estilos para o Container Principal */
+  .container {
+    width: 100%; 
+    max-width: 800px; 
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; 
+  }
+  
+  h1 {
+    text-align: center;
+    color: #e1e4e8;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo dos Cards */
+  .card {
+    width: 200%; 
+    background: linear-gradient(145deg, #3a3d4f, #2a2d3e);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    border: 1px solid #353946;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card:hover {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card h2 {
+    color: #e2e4f0;
+    font-size: 20px;
+    margin: 0; 
+    font-weight: 500;
+  }
+  
+  /* Estilos para Inputs e Botões */
+  input[type="text"],
+  input[type="date"] {
+    width: 95%;
+    padding: 10px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #f5f6fa;
+    background-color: #45485e;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="date"]:focus {
+    background-color: #454a5e;
+    box-shadow: 0 0 4px #7289da;
+    outline: none;
+  }
+  
+  button {
+    padding: 12px 20px;
+    margin: 10px 0; 
+    background: linear-gradient(145deg, #7c4acc, #b654d4);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    align-self: center; 
+    width: 50%;
+  }
+  
+  button:hover {
+    background: linear-gradient(145deg, #5468d4, #7289da);
+    transform: translateY(-2px);
+  }
+  
+  /* Estilo para o Botão de Pesquisa */
+  button:last-of-type {
+    background: linear-gradient(145deg, #585bff, #397bbd);
+  }
+  
+  button:last-of-type:hover {
+    background: linear-gradient(145deg, #397bbd, #58a6ff);
+  }
+  
+  /* Estilo para a Lista de Livros */
+  .book-item {
+    background: #2a2d3e;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  
+  .book-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .book-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #c5c8d3;
+  }
+  
+
+  /* Alinhamento dos Botões de Ação no Card de Livro */
+.button-group {
+    display: flex;
+    gap: 10px; 
+    margin-top: 10px;
+  }
+  
+  .button-group button {
+    width: 100%;
+    background: linear-gradient(145deg, #2a2d3e, #2a2d3e);
+    border: 2px solid #9fa8ca; 
+  }
+  
+  .button-group button:hover {
+    background: linear-gradient(145deg, #2ca03b, #469e73);
+  }
+  
+  .button-group button:nth-child(2) {
+    background: linear-gradient(145deg, #2a2d3e, #2a2d3e);
+  }
+  
+  .button-group button:nth-child(2):hover {
+    background: linear-gradient(145deg, #9c1717, #d13232);
+  }
+
+  /* Espaçamento entre botões de edição */
+.edit-button-group {
+    display: flex;
+    gap: 10px; 
+    margin-top: 10px;
+  }
+  
+  .edit-button-group button {
+    width: auto; 
+  }
+  
+  
+  /* Ajustes para Responsividade */
+  @media (max-width: 600px) {
+    .container {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 22px;
+    }
+  
+    h2 {
+      font-size: 18px;
+    }
+  
+    input[type="text"],
+    input[type="date"] {
+      font-size: 14px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 10px 16px;
+    }
+  }
+  
