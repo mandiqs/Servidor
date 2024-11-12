@@ -62,8 +62,5 @@ Disponível em http://localhost:8080/api/swagger-ui/index.html#/
 - DELETE /books/{id}: Exclui um livro (somente para ADMIN).
 
 ##### Gerenciamento de Autores
-- GET /authors: Lista todos os autores (acesso público).
-- GET /authors/{id}: Busca um autor pelo ID (acesso público).
 - POST /authors: Adiciona um novo autor (necessita autenticação).
-- PUT /authors/{id}: Atualiza um autor (somente para ADMIN).
-- DELETE /authors/{id}: Exclui um autor (somente para ADMIN).
+- PUT /authors/{authorId}/books/{bookId}: Associa um autor a um livro (necessita autenticação).
