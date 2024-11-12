@@ -2,8 +2,8 @@
 ***
 
 ### Dupla
-Amanda Queiroz Sobral
-Carlos Eduardo Domingues Hobmeier
+- Amanda Queiroz Sobral
+- Carlos Eduardo Domingues Hobmeier
 
 ### Link para o vídeo
 www.
@@ -45,9 +45,9 @@ Disponível em http://localhost:8080/api/swagger-ui/index.html#/
 
 ***
 ## FrontEnd
-npm install
-npm axios install
-npm run dev
+- npm install
+- npm axios install
+- npm run dev
 
 ***
 ## Endpoints
