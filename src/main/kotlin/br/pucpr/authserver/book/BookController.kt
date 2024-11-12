@@ -5,12 +5,12 @@ import br.pucpr.authserver.book.requests.UpdateBookRequest
 import br.pucpr.authserver.book.response.BookResponse
 import br.pucpr.authserver.errors.BadRequestException
 import br.pucpr.authserver.users.SortDir
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
-import io.swagger.v3.oas.annotations.security.SecurityRequirement
 
 @RestController
 @RequestMapping("/books")
@@ -35,10 +35,12 @@ class BookController(
         bookService.getBook(id)
             .let { ResponseEntity.ok(it) }
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @SecurityRequirement(name = "AuthServer")
     fun update(@PathVariable id: Long, @RequestBody @Valid request: UpdateBookRequest): ResponseEntity<Book> =
-        bookService.update(id, request)
-            .let { ResponseEntity.ok(it) }
+            bookService.update(id, request)
+                    .let { ResponseEntity.ok(it) }
 
     @SecurityRequirement(name = "AuthServer")
     @DeleteMapping("/{id}")

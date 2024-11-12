@@ -5,6 +5,7 @@ import api from '../../services/api';
 function Home() {
   const [books, setBooks] = useState([]);
   const [newBook, setNewBook] = useState({ title: '', publicationDate: '' });
+  const [editBook, setEditBook] = useState({ title: '', publicationDate: '' }); 
   const [editingBookId, setEditingBookId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBooks, setFilteredBooks] = useState([]);
@@ -32,21 +33,41 @@ function Home() {
 
   function startEditingBook(book) {
     setEditingBookId(book.id);
-    setNewBook({ title: book.title, publicationDate: book.publicationDate });
+    setEditBook({ title: book.title, publicationDate: book.publicationDate });
   }
 
   async function updateBook() {
-    try {
-      const response = await api.put(`/books/${editingBookId}`, newBook);
-      const updatedBooks = books.map((book) =>
-        book.id === editingBookId ? response.data : book
-      );
-      setBooks(updatedBooks);
-      setFilteredBooks(updatedBooks);
-      setEditingBookId(null);
-      setNewBook({ title: '', publicationDate: '' });
-    } catch (error) {
-      console.error("Erro ao editar livro:", error);
+    if (!editingBookId) {
+      alert('Nenhum livro está sendo editado no momento.');
+      return;
+    }
+  
+    const confirmUpdate = window.confirm("Tem certeza que deseja atualizar este livro?");
+    if (confirmUpdate) {
+      try {
+        console.log("Atualizando livro com ID:", editingBookId);
+        console.log("Dados para atualização:", editBook);
+  
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzE0MDA4NTAsImV4cCI6MTczMTQwODA1MCwiaXNzIjoiUFVDUFIgQXV0aFNlcnZlciIsInN1YiI6IjEiLCJVc2VyIjp7ImlkIjoxLCJuYW1lIjoiQWRtaW5pc3RyYWRvciIsInJvbGVzIjpbIkFETUlOIl19fQ.8ZukcZ_TJ_Pwf757MkTtW2Bl7VWQe8QPRkpj2n7c6Wg';
+        const response = await api.put(`/books/${editingBookId}`, editBook, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
+        console.log("Resposta da API:", response.data);
+  
+        const updatedBooks = books.map(book => 
+          book.id === editingBookId ? { ...book, ...response.data } : book
+        );
+        setBooks(updatedBooks);
+        setFilteredBooks(updatedBooks);
+        setEditingBookId(null);
+        setEditBook({ title: '', publicationDate: '' });
+        console.log(`Livro com ID ${editingBookId} atualizado com sucesso.`);
+      } catch (error) {
+        console.error("Erro ao editar livro:", error);
+      }
     }
   }
 
@@ -54,8 +75,13 @@ function Home() {
     const confirmDelete = window.confirm("Tem certeza que deseja excluir este livro?");
     if (confirmDelete) {
       try {
-        await api.delete(`/books/${id}`); // Realiza a exclusão no servidor
-        const updatedBooks = books.filter((book) => book.id !== id); // Remove o livro da lista no frontend
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzE0MDA4NTAsImV4cCI6MTczMTQwODA1MCwiaXNzIjoiUFVDUFIgQXV0aFNlcnZlciIsInN1YiI6IjEiLCJVc2VyIjp7ImlkIjoxLCJuYW1lIjoiQWRtaW5pc3RyYWRvciIsInJvbGVzIjpbIkFETUlOIl19fQ.8ZukcZ_TJ_Pwf757MkTtW2Bl7VWQe8QPRkpj2n7c6Wg';
+        await api.delete(`/books/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const updatedBooks = books.filter((book) => book.id !== id);
         setBooks(updatedBooks);
         setFilteredBooks(updatedBooks);
         console.log(`Livro com ID ${id} excluído com sucesso.`);
@@ -119,18 +145,21 @@ function Home() {
                 <input
                   type="text"
                   placeholder="Título do livro"
-                  value={newBook.title}
-                  onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}
+                  value={editBook.title}  
+                  onChange={(e) => setEditBook({ ...editBook, title: e.target.value })} 
                 />
                 <input
                   type="date"
                   placeholder="Data de publicação"
-                  value={newBook.publicationDate}
-                  onChange={(e) => setNewBook({ ...newBook, publicationDate: e.target.value })}
+                  value={editBook.publicationDate} 
+                  onChange={(e) => setEditBook({ ...editBook, publicationDate: e.target.value })}  
                 />
                 <div className="edit-button-group">
                   <button onClick={updateBook}>Atualizar</button>
-                  <button onClick={() => setEditingBookId(null)}>Cancelar</button>
+                  <button onClick={() => {
+                    setEditingBookId(null);
+                    setEditBook({ title: '', publicationDate: '' }); // Limpa o formulário ao cancelar
+                  }}>Cancelar</button>
                 </div>
               </div>
             ) : (
@@ -152,15 +181,3 @@ function Home() {
 }
 
 export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
